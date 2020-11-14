@@ -2,7 +2,8 @@
 var movieListEl = $(".movieList");
 var searchButton = $("#searchButton");
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-var monthsNum = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11","12"];
+var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
+var oldDate
 
 //FUNCTIONSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 function getNews(){
@@ -91,6 +92,7 @@ function dateConverter(date){
 }
 
 function NYTData(gdate){
+    console.log(gdate[0]);
     console.log(gdate[1]);
     console.log(gdate[2]);
     var queryURL = "https://api.nytimes.com/svc/archive/v1/" +gdate[2]+"/"+gdate[1]+".json?api-key=t7uEOJet36tmSbd8T0F47LNB1NcGTrAj";
@@ -98,9 +100,29 @@ function NYTData(gdate){
         url: queryURL,
         method: "GET"
     })
-    .then(function(response){
-        console.log(response)
+    .then(function(res){
+        queryToData(gdate)
+        var allDocs = res.response.docs
+        var NYTDate = "/"+ oldDate[2]+"/"+oldDate[1]+"/"+oldDate[0]
+        allDocs.forEach(elements =>{
+            if(elements.web_url.includes(NYTDate)){
+                console.log(elements.web_url)
+                console.log(elements.news_desk)
+
+            }
+        })
     });
+}
+
+function queryToData(d){
+    oldDate = d
+    var newNums = ["1","2","3","4","5","6","7","8","9"]
+    newNums.forEach(element =>{
+        if (oldDate[1] === element){
+            oldDate.splice(1, 1, "0"+element)
+        }
+    })
+
 }
 
 searchButton.on("click", function(event){
@@ -114,4 +136,15 @@ document.addEventListener("click", function(event){
        getMovieInfo(event)
     }
 })
+
+
+
+// var tes = ["03", "1" , "1980"]
+// var newNums = ["1","2","3","4","5","6","7","8","9"]
+// newNums.forEach(elements =>{
+//     if (tes[1] === elements){
+//         tes.splice(1,1, "0"+elements)
+//         console.log(tes)
+//     }
+// })
 // console.log($(".inputMovie").children()[1]
