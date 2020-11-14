@@ -1,9 +1,11 @@
 //VARIABLESxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 var movieListEl = $(".movieList");
 var searchButton = $("#searchButton");
+var modalDesks = $("#desks")
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
 var oldDate
+
 
 //FUNCTIONSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 function getNews(){
@@ -16,6 +18,9 @@ function getNews(){
 }
 
 function movieSearch(){
+    if(movieListEl.children()){
+        movieListEl.children().remove()
+    }
     var searchName = $("#movieName").val();
     var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&type=movie&s=" + searchName;
     $.ajax({
@@ -24,7 +29,7 @@ function movieSearch(){
     })
     .then(function(response){
         response.Search.forEach(element => {
-        movieList(element)        
+        movieList(element)       
     });
     })
     
@@ -34,15 +39,15 @@ function movieList(e){
     var container = $("<div>");
     var title = $("<div>");
     var poster = $("<div>");
-    var link = $("<a>");
+    // var link = $("<a>");
     var titleH2 = $("<h2>");
     var year = $("<h2>");
     var posterIMG = $("<img>");
-    link.attr("id", "ga");
+    // link.attr("id", "ga");
     container.attr("style", "display:flex; margin-bottom:1vw;");
     posterIMG.attr("id", "poster");
     title.attr("style", "margin-right:1vw; word-wrap:break-word; width:25%");
-    link.attr("href", "#");
+    // link.attr("href", "#");
     if(e.Poster === "N/A"){
         posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     }
@@ -53,17 +58,17 @@ function movieList(e){
     year.text(e.Year);
     title.append(titleH2);
     title.append(year);
+    // link.append(posterIMG);
     poster.append(posterIMG);
     container.append(title);
     container.append(poster);
-    link.append(container);
-    movieListEl.append(link);
+    movieListEl.append(container);
     
 }
 
 function getMovieInfo(event){
     var movieName = $("#movieName").val();
-    var movieYear = event.target.parentElement.parentElement.children[0].children[1].innerHTML;
+    var movieYear = event.target.parentElement.previousElementSibling.children[1].innerHTML;
     var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&&t=" + movieName + "&y=" + movieYear ;
     $.ajax({
         url: queryURL,
@@ -73,7 +78,6 @@ function getMovieInfo(event){
         var released = response.Released;
         var splitDate = released.split(" ");
         dateConverter(splitDate)
-        
     });
 }
 
@@ -88,13 +92,12 @@ function dateConverter(date){
         
     })
     NYTData(date)
-    // console.log(date)
 }
 
 function NYTData(gdate){
-    console.log(gdate[0]);
-    console.log(gdate[1]);
-    console.log(gdate[2]);
+    // console.log(gdate[0]);
+    // console.log(gdate[1]);
+    // console.log(gdate[2]);
     var queryURL = "https://api.nytimes.com/svc/archive/v1/" +gdate[2]+"/"+gdate[1]+".json?api-key=t7uEOJet36tmSbd8T0F47LNB1NcGTrAj";
     $.ajax({
         url: queryURL,
@@ -104,10 +107,13 @@ function NYTData(gdate){
         queryToData(gdate)
         var allDocs = res.response.docs
         var NYTDate = "/"+ oldDate[2]+"/"+oldDate[1]+"/"+oldDate[0]
-        allDocs.forEach(elements =>{
-            if(elements.web_url.includes(NYTDate)){
-                console.log(elements.web_url)
-                console.log(elements.news_desk)
+        NYTDataElements()
+        allDocs.forEach(element =>{
+            if(element.web_url.includes(NYTDate)){
+                
+                // console.log(element)
+                // console.log(element.web_url)
+                // console.log(element.news_desk)
 
             }
         })
@@ -122,6 +128,21 @@ function queryToData(d){
             oldDate.splice(1, 1, "0"+element)
         }
     })
+}
+
+function NYTDataElements(){
+    var desks = ["nation", "foreign", "metro", "financial", "sports", "science", "weekend", "art", "culture", "book", "society", " style", 
+                "weekIn", "travel", "home"]
+    var pic = $("<div>")
+    var picIMG = 
+    modalDesks.append(pic)
+    desks.forEach(element=>{
+        var i = desks.indexOf(element)
+        var element = $("<div>")
+        element.text(desks[i])
+        modalDesks.append(element)
+    });
+
 
 }
 
@@ -148,3 +169,20 @@ document.addEventListener("click", function(event){
 //     }
 // })
 // console.log($(".inputMovie").children()[1]
+
+    // var nation = $("<div>")
+    // var foreign = $("<div>")
+    // var metro = $("<div>")
+    // var financial = $("<div>")
+    // var sports = $("<div>")
+    // var science = $("<div>")
+    // var weekend = $("<div>")
+    // var art =$("<div>")
+    // var culture = $("<div>")
+    // var book = $("<div>")
+    // var society = $("<div>")
+    // var style = $("<div>")
+    // var weekIn = $("<div>")
+    // var travel = $("<div>")
+    // var home = $("<div>")
+
