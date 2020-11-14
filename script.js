@@ -56,8 +56,12 @@ function movieList(e){
         posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     }
     else{
+
         posterIMG.attr("src", e.Poster)
+        
     }
+    posterIMG.attr("data-year", e.Year)
+    posterIMG.attr("data-title", e.Title)
     titleH2.text(e.Title);
     year.text(e.Year);
     title.append(titleH2);
@@ -70,21 +74,23 @@ function movieList(e){
 }
 
 function getMovieInfo(event){
-    modalMainEl.attr("style", "display:flex")
-    var movieName = $("#movieName").val();
-    var movieYear = event.target.parentElement.previousElementSibling.children[1].innerHTML;
+    console.log(event.target)
+    // var movieName = $("#movieName").val();
+    var movieYear = $(event.target).attr("data-year")
+    var movieName = $(event.target).attr("data-title")
     var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&&t=" + movieName + "&y=" + movieYear ;
     $.ajax({
         url: queryURL,
         method: "GET"
     })
     .then(function(response){
-        
+        console.log(response)
         var released = response.Released;
         var splitDate = released.split(" ");
         dateConverter(splitDate)
         
     });
+    modalMainEl.attr("style", "display:flex")
 }
 
 function dateConverter(date){
@@ -116,15 +122,21 @@ function NYTData(gdate){
         newNums.forEach(elements=>{
             if(gdate[1] === elements){
                 queryToData(gdate)
+                NYTDate = "/"+ oldDate[2]+"/"+oldDate[1]+"/"+oldDate[0]
+            }
+            else{
+            NYTDate = "/"+ gdate[2]+"/"+gdate[1]+"/"+gdate[0]    
             }
         })
+        var NYTDate
+        console.log(gdate)
+        console.log(oldDate)
         var allDocs = res.response.docs
-        var NYTDate = "/"+ oldDate[2]+"/"+oldDate[1]+"/"+oldDate[0]
         articles = []
         allDocs.forEach(element =>{
             if(element.web_url.includes(NYTDate)){
               articles.push(element)
-                // console.log(element)
+                console.log(element)
                 // console.log(element.web_url)
                 // console.log(element.news_desk)
             }
@@ -146,8 +158,10 @@ function queryToData(d){
 function NYTDataPull(){
     modalButtonsEl.on("click", function(event){
     var newsDesk = []    
+    modalArticlesEl.children().remove()
             articles.forEach(element=>{
                 if (element.news_desk.includes(event.target.innerHTML)){
+                    
                     newsDesk.push()
                     varName++
                     var varName = $("<div>")
