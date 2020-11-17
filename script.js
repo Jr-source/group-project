@@ -7,8 +7,9 @@ var modalButtonsEl = $("#main-buttons");
 var modalArticlesEl = $("#article-links");
 var modalCloseButton = $("#close-button");
 var modalMainEl = $("#main-modal");
-var disclaimerEL = $("#disclaimer")
-var noneButton = $("#noneButton")
+var disclaimerEL = $("#disclaimer");
+var noneButton = $("#noneButton");
+var saveBox = $("#saveBox");
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
 var oldDate
@@ -245,6 +246,7 @@ function articleElements(element){
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
     a.attr("draggable", "true")
+    a.attr("style", "text-align: left")
     a.attr("ondragstart", "drag(event)")
     a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
@@ -267,16 +269,17 @@ function allowDrop(ev){
 }
 
 function drag(ev){
-    console.log(ev.target.id)
     ev.dataTransfer.setData("text", ev.target.id)
-    
 }
 
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(data)
-    ev.target.appendChild(document.getElementById(data));
+    var spacer = $("<div>");
+    spacer.attr("style", "display: block");
+    var texts = ev.target.appendChild(document.getElementById(data));
+    spacer.append(texts);
+    saveBox.append(spacer);
 }
 
 //EVENT LISTENERSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

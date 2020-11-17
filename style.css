@@ -20,11 +20,8 @@
     margin-bottom: 5vw;
 }
 
-#movieName{
-    width: 15vw;
-}
-#movieList{
-    
+
+.movieList{
     font-size: 1vw;
     font-weight: 600;
     display: flex;
@@ -119,11 +116,16 @@ h3{
     color: white;
     background-color: black;
 }
-#md-image{
-
+#saveBox{
     background-color: #e6e9df;
     height: 33%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+    align-items: start;
+    text-align: left;
+    justify-content: start;
 }
  #disclaimer{
      flex-direction: column;
