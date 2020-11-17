@@ -14,8 +14,8 @@ var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
 var oldDate
 var articles = [];
 var articlesN = [];
-var varName = 0;
 var nSignal = 0
+var varName = 0
 
 
 
@@ -159,7 +159,7 @@ function NYTData(gdate){
               articles.push(element)
             }
         })
-        console.log(nSignal)
+        // console.log(nSignal)
         articles.forEach(element=>{
             if(element.news_desk === "None"){
                 nSignal = 1
@@ -169,7 +169,7 @@ function NYTData(gdate){
             }
          })
         if (nSignal === 1){
-            console.log("hi")
+            // console.log("hi")
             noneDesk()
             nSignal = 0
         }
@@ -235,7 +235,8 @@ function NYTDataPull(){
 //THIS FUNCTION CREATES AND APPENDS THE ELEMENTS TO RENDER THE ARTICLES IN THE MODAL WINDOW
 function articleElements(element){
     //Creates elements++++++++++++++++++++++++++++++++++++
-    var varName = $("<div>")
+    varName++
+    var cont = $("<div>")
     var a = $("<a>")
     var leadP = $("<p>")
     var idP = $("<p>")
@@ -243,6 +244,9 @@ function articleElements(element){
     var leadPar = $("<div>")
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
+    a.attr("draggable", "true")
+    a.attr("ondragstart", "drag(event)")
+    a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
     a.attr("href", element.web_url)
     //Sets text values++++++++++++++++++++++++++++++++++++++++++
@@ -254,9 +258,27 @@ function articleElements(element){
     link.append(a)
     leadPar.append(leadP)
     articleId.append(idP)
-    varName.append(link, leadPar, articleId)
-    modalArticlesEl.append(varName)
+    cont.append(link, leadPar, articleId)
+    modalArticlesEl.append(cont)
 }
+
+function allowDrop(ev){
+    ev.preventDefault();
+}
+
+function drag(ev){
+    console.log(ev.target.id)
+    ev.dataTransfer.setData("text", ev.target.id)
+    
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    console.log(data)
+    ev.target.appendChild(document.getElementById(data));
+}
+
 //EVENT LISTENERSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //THESE EVENT LISTENER TRIGGER THE MOVIE SEARCH========================
 searchButton.on("click", function(event){
