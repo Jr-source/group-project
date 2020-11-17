@@ -20,11 +20,8 @@
     margin-bottom: 5vw;
 }
 
-#movieName{
-    width: 15vw;
-}
-#movieList{
-    
+
+.movieList{
     font-size: 1vw;
     font-weight: 600;
     display: flex;

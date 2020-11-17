@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="jquery-ui.min.css"> -->
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Movie Context</title>
 </head>
@@ -57,22 +58,41 @@
 
         </div>
     </div>
-    <div class="mainDiv">
-        <div class="header">
-            <h1>
-                MOVIE CONTEXT
+   
+    <!-- Bulma class -->
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              The History of Cinema
             </h1>
+            <h2 class="subtitle">
+              MOVIES and the NEWS....why it matters.
+            </h2>
+          </div>
         </div>
+        <!-- <input class="input is-rounded" type="text" placeholder="Rounded input"> -->
+        <div class ="control">
+            
         <div class="inputMovie">
+            
             <label for="movieName"></label>
-            <input type="text" id="movieName" title="Put the name of your favorite movie in here" placeholder="Enter the name of your favorite movie here">
-            <button id="searchButton">Search</button>
-        </div>
-        <div id="movieList">
+            
 
+            <input type="text" id="movieName" title="Put the name of your favorite movie in here" placeholder="Search movie title here">
+            
+            <div class="control">
+                <button id="searchButton" class="button is-dark">Submit</button>
+                <!-- FIX ALIGNMENT ON SEARCH AND SUBMIT -->
+              </div>
+            
+          </div>
+          </section>
+        
+        <div id="movieList" class="movieList">
         </div>
         <div class="news"></div>
-
+    
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="external/jquery/jquery.js"></script>
