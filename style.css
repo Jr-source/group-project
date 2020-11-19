@@ -85,6 +85,7 @@ img:hover{
     background-color: #29117c;
     width: 6vw;
     height: 2vw;
+    cursor: pointer;
 }
 
 h3{
