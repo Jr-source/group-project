@@ -10,13 +10,17 @@ var modalMainEl = $("#main-modal");
 var disclaimerEL = $("#disclaimer");
 var noneButton = $("#noneButton");
 var saveBox = $("#saveBox");
+var pSearchesButton = $("#dropbttn") 
+var dropmenu = $("#dropmenu")
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
 var oldDate
 var articles = [];
 var articlesN = [];
 var nSignal = 0
+var doubleSignal = 0
 var varName = 0
+var pSearches = []
 
 
 
@@ -111,6 +115,40 @@ function getMovieInfo(event){
     });
     //Displays modal+++++++++++++++++++++++++++++++++++++
     modalMainEl.attr("style", "display:flex")
+    // console.log(movieName)
+    saveSearch(movieName, movieYear)
+}
+
+//======================================================================
+function saveSearch(movie, year){
+    doubleSignal = 0
+    var info = {title:movie, year:year}
+    if (localStorage.getItem("pastSearches")){
+        pSearches = JSON.parse(localStorage.getItem("pastSearches"))
+    }
+    pSearches.forEach(em=>{
+        if(em.title === movie && em.year === year){
+            doubleSignal = 1
+        }
+    })
+    if(info.title === 1 && info.year === 2|| doubleSignal === 1){}
+    else{
+        pSearches.push(info)   
+    }
+    localStorage.setItem("pastSearches", JSON.stringify(pSearches))
+    // console.log(pSearches)
+    dropmenu.children().remove()
+    pSearches.forEach(element=>{
+        
+        var savelist = $("<p>") 
+        savelist.attr("class", "saves")
+        savelist.attr("data-year", element.year)
+        savelist.attr("data-title", element.title)
+        savelist.append(element.title + " " + element.year)
+        dropmenu.append(savelist) 
+    })
+    
+    // console.log(movie)
 }
 
 //THIS FUNCTIONCONVERTS THE DATE OBTAINED FROM THE MOVIE API QUERY TO A SUITABLE FORMAT FOR THE NYT QUERY
@@ -307,6 +345,30 @@ modalCloseButton.on("click", function(event){
     modalMainEl.attr("style", "display:none")
 })
 
+pSearchesButton.on("click", function(event){
+    dropmenu.attr("style", "display:flex" );
+    saveSearch(1, 2)
+})
+
+window.onmouseover = function(event){
+    if(event.target.id === "dropbttn" || event.target.tagName === "P"){
+        return
+    }
+    else{
+    dropmenu.attr("style", "display:none")
+    }
+}
+
+document.addEventListener("click", function(event){
+    if (event.target.className === "saves"){
+        console.log(event.target)
+        getMovieInfo(event)
+    }
+    else{
+        return
+    }
+})
+
 
    
-//comment
+        
