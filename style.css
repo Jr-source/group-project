@@ -63,7 +63,7 @@ img:hover{
     margin: 0vh 3vw 3vh 3vw;
     width: 95%;
     height: 99%;
-    /* overflow: auto; */
+    overflow: auto;
     background-color: #0a265aaa;
 }
 
@@ -118,12 +118,13 @@ h3{
     /* padding-top: 0.55vw;
     width: 6vw;
     height: 2vw; */
-    color: white;
-    background-color: black;
+    font: 1em sans-serif;
+    color: black;
+    background-color: #F0E68C;
     border-style: solid;
     border-width: 1px;
-    border-radius: var(--border-radius);
-    padding: 10px;
+    border-radius: 50px 50px 0 0;
+    padding: 0vw 1vw 1vw 1vw;
     flex: 0 0 300px;
     box-shadow: 10px 10px 5px #aaaaaa;
     margin: 20px;
