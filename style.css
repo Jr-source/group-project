@@ -85,11 +85,13 @@ img:hover{
 }
 #close-button{
     position: absolute;
-    left: 85vw;
+    left: 87vw;
     top: 2vw;
-    background-color: #29117c;
-    width: 6vw;
-    height: 2vw;
+    background-color:purple;
+    width: 1.5vw;
+    height: 1.6vw;
+    cursor: pointer;
+    opacity: 0.40;
 }
 
 h3{
