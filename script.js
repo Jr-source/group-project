@@ -7,15 +7,16 @@ var modalButtonsEl = $("#main-buttons");
 var modalArticlesEl = $("#article-links");
 var modalCloseButton = $("#close-button");
 var modalMainEl = $("#main-modal");
-var disclaimerEL = $("#disclaimer")
-var noneButton = $("#noneButton")
+var disclaimerEL = $("#disclaimer");
+var noneButton = $("#noneButton");
+var saveBox = $("#saveBox");
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var monthsNum = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"];
 var oldDate
 var articles = [];
 var articlesN = [];
-var varName = 0;
 var nSignal = 0
+var varName = 0
 
 
 
@@ -67,15 +68,17 @@ function movieList(e){
     var titleH2 = $("<h2>");            
     var year = $("<h2>");               
     var posterIMG = $("<img>");         
-    //Sets element attributes++++++++++++++++++++++++++++++++++CSS
-    container.attr("style", "display:flex; margin-bottom:1vw;");
+    // Sets element attributes++++++++++++++++++++++++++++++++++CSS
+    container.attr("class", ".containerTitle;");
+    // posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     posterIMG.attr("id", "poster");
-    title.attr("style", "margin-right:1vw; word-wrap:break-word; width:25%");
+    posterIMG.attr("class", "posterImage;")
+    // poster.attr("style", "width: 10vw; height: 10vh;")
     if(e.Poster === "N/A"){
         posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     }
     else{
-        posterIMG.attr("src", e.Poster)
+        posterIMG.attr("src",e. Poster)
     }
     posterIMG.attr("data-year", e.Year)
     posterIMG.attr("data-title", e.Title)
@@ -159,7 +162,7 @@ function NYTData(gdate){
               articles.push(element)
             }
         })
-        console.log(nSignal)
+        // console.log(nSignal)
         articles.forEach(element=>{
             if(element.news_desk === "None"){
                 nSignal = 1
@@ -169,7 +172,7 @@ function NYTData(gdate){
             }
          })
         if (nSignal === 1){
-            console.log("hi")
+            // console.log("hi")
             noneDesk()
             nSignal = 0
         }
@@ -235,7 +238,8 @@ function NYTDataPull(){
 //THIS FUNCTION CREATES AND APPENDS THE ELEMENTS TO RENDER THE ARTICLES IN THE MODAL WINDOW
 function articleElements(element){
     //Creates elements++++++++++++++++++++++++++++++++++++
-    var varName = $("<div>")
+    varName++
+    var cont = $("<div>")
     var a = $("<a>")
     var leadP = $("<p>")
     var idP = $("<p>")
@@ -243,6 +247,10 @@ function articleElements(element){
     var leadPar = $("<div>")
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
+    a.attr("draggable", "true")
+    a.attr("style", "text-align: left")
+    a.attr("ondragstart", "drag(event)")
+    a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
     a.attr("href", element.web_url)
     //Sets text values++++++++++++++++++++++++++++++++++++++++++
@@ -254,9 +262,28 @@ function articleElements(element){
     link.append(a)
     leadPar.append(leadP)
     articleId.append(idP)
-    varName.append(link, leadPar, articleId)
-    modalArticlesEl.append(varName)
+    cont.append(link, leadPar, articleId)
+    modalArticlesEl.append(cont)
 }
+
+function allowDrop(ev){
+    ev.preventDefault();
+}
+
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id)
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var spacer = $("<div>");
+    spacer.attr("style", "display: block");
+    var texts = ev.target.appendChild(document.getElementById(data));
+    spacer.append(texts);
+    saveBox.append(spacer);
+}
+
 //EVENT LISTENERSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //THESE EVENT LISTENER TRIGGER THE MOVIE SEARCH========================
 searchButton.on("click", function(event){
