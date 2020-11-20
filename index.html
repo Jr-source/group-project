@@ -48,13 +48,11 @@
 
             </div>
             <div id="content">
-                <div id="close-button">
-                    <h3>Close X</h3>
-                </div>
+                <button id="close-button">
+                    <button>X</button>
+                </button>
                 <div id="article-links">
-
                 </div>
-            
             </div>
 
 
@@ -63,6 +61,7 @@
    
     <!-- Bulma class -->
     <section class="hero is-medium is-primary is-bold">
+      
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
@@ -86,12 +85,17 @@
             <div class="control">
                 <button id="searchButton" class="button is-dark">Submit</button>
                 <!-- FIX ALIGNMENT ON SEARCH AND SUBMIT -->
-              </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbttn" id="dropbttn">Previous Searches</button>
+                <div id="dropmenu" class="dropmenu"></div>
+    
+            </div>
             
           </div>
           </section>
         
-        <div id="movieList" class="movieList">
+        <div id="movieList" class="movieList tile is-child notification is-info">
         </div>
         <div class="news"></div>
     

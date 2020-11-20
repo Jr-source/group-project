@@ -86,11 +86,13 @@ img:hover{
 }
 #close-button{
     position: absolute;
-    left: 85vw;
+    left: 87vw;
     top: 2vw;
-    background-color: #29117c;
-    width: 6vw;
-    height: 2vw;
+    background-color:#f0e68c;
+    width: 1.5vw;
+    height: 1.6vw;
+    cursor: pointer;
+    opacity: 0.40;
 }
 
 h3{
@@ -130,6 +132,7 @@ h3{
     flex: 0 0 300px;
     margin: 20px;
     cursor: pointer;
+
     font-size: larger;
 }
 #nav-buttons:hover{
@@ -151,6 +154,25 @@ h3{
      justify-content: center;
      align-content: center;
  }
+
+
+ .dropmenu{
+     flex-direction: column;
+     font-size: 1vw;
+     display: none;
+     z-index: 1;
+ }
+
+ .dropdown{
+    flex-direction: column;
+    margin-top: 1vh;
+ }
+
+ .dropbttn:hover{
+     cursor: pointer;
+ }
+
+
  .posterImage{
      object-fit: cover;
      width: 10vw;
@@ -173,3 +195,4 @@ h3{
   margin: 20px;
   height: ;
 } */
+
