@@ -87,7 +87,7 @@ img:hover{
     position: absolute;
     left: 87vw;
     top: 2vw;
-    background-color:purple;
+    background-color:#f0e68c;
     width: 1.5vw;
     height: 1.6vw;
     cursor: pointer;
@@ -130,6 +130,7 @@ h3{
     flex: 0 0 300px;
     box-shadow: 10px 10px 5px #aaaaaa;
     margin: 20px;
+    cursor: pointer;
 }
 #saveBox{
     background-color: #e6e9df;
