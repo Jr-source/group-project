@@ -118,7 +118,6 @@ function getMovieInfo(event){
     });
     //Displays modal+++++++++++++++++++++++++++++++++++++
     modalMainEl.attr("style", "display:flex")
-    // console.log(movieName)
     saveSearch(movieName, movieYear)
 }
 
@@ -161,7 +160,7 @@ function saveSearch(movie, year){
     })
 }
     
-}
+
 
 //THIS FUNCTIONCONVERTS THE DATE OBTAINED FROM THE MOVIE API QUERY TO A SUITABLE FORMAT FOR THE NYT QUERY
 //IT ALSO CALLS THE FUNCTION THAT QUERIES THE NYT API
@@ -220,12 +219,10 @@ function NYTData(gdate){
             }
          })
         if (nSignal === 1){
-            // console.log("hi")
             noneDesk()
             nSignal = 0
         }
         else{
-            console.log("lo")
             NYTDataPull()
         }
     });
@@ -296,7 +293,6 @@ function articleElements(element){
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
     a.attr("draggable", "true")
-    a.attr("style", "text-align: left")
     a.attr("ondragstart", "drag(event)")
     a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
@@ -314,19 +310,30 @@ function articleElements(element){
     modalArticlesEl.append(cont)
 }
 
+//DRAG AND DROP====================================================
 function allowDrop(ev){
     ev.preventDefault();
 }
 
 function drag(ev){
+    cNum = 1
     ev.dataTransfer.setData("text", ev.target.id)
+    var clone =$(ev.target).clone()
+    var  parentDiv = $(ev.target).parent();
+    clone.text($(ev.target).text())
+    clone.attr("id", "clone" + ev.target.id)
+    cNum++
+    clone.attr("style", "display:none;");
+    parentDiv.append(clone);
 }
 
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    var cloneDisplay = $("#clone"+data)
+    cloneDisplay.attr("style", "display:flex;")
     var spacer = $("<div>");
-    spacer.attr("style", "display: block");
+    spacer.attr("style", "display: block; margin: 0;");
     var texts = ev.target.appendChild(document.getElementById(data));
     spacer.append(texts);
     saveBox.append(spacer);
