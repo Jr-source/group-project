@@ -238,7 +238,7 @@ function queryToData(d){
 function noneDesk(){
     //Clears the information in the articles window+++++++++++++++++++++++++
     modalArticlesEl.children().remove()
-    //Hides the New_Desk navigation buttons and displays the option to view th eunorganized articles+++++++++++
+    //Hides the New_Desk navigation buttons and displays the option to view the unorganized articles+++++++++++
     modalButtonsEl.attr("style", "display:none")
     disclaimerEL.attr("style", "display:flex")
     //Creates the event listener for the "Articles" button inside the modal 
@@ -285,15 +285,23 @@ function articleElements(element){
     var leadPar = $("<div>")
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
+    cont.attr("class", "box")
     a.attr("draggable", "true")
     a.attr("style", "text-align: left")
     a.attr("ondragstart", "drag(event)")
     a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
     a.attr("href", element.web_url)
+    a.attr("class", "article-style drop-title has-background-dark")
+    idP.attr("class", "article-style has-background-primary")
+    idP.attr("style", "word-wrap: break-word")
+    leadP.attr("class", "article-style has-background-warning")
+    // leadP.attr("class", "button is-warning")
+    
     //Sets text values++++++++++++++++++++++++++++++++++++++++++
     a.text(element.headline)
     leadP.text(element.lead_paragraph)
+    
     idP.text(element._id)
     a.text(element.headline.main)
     //Appends elements+++++++++++++++++++++++++++++++++++++++++
