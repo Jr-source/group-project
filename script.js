@@ -72,15 +72,17 @@ function movieList(e){
     var titleH2 = $("<h2>");            
     var year = $("<h2>");               
     var posterIMG = $("<img>");         
-    //Sets element attributes++++++++++++++++++++++++++++++++++CSS
-    container.attr("style", "display:flex; margin-bottom:1vw;");
+    // Sets element attributes++++++++++++++++++++++++++++++++++CSS
+    container.attr("class", ".containerTitle;");
+    // posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     posterIMG.attr("id", "poster");
-    title.attr("style", "margin-right:1vw; word-wrap:break-word; width:25%");
+    posterIMG.attr("class", "posterImage;")
+    // poster.attr("style", "width: 10vw; height: 10vh;")
     if(e.Poster === "N/A"){
         posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     }
     else{
-        posterIMG.attr("src", e.Poster)
+        posterIMG.attr("src",e. Poster)
     }
     posterIMG.attr("data-year", e.Year)
     posterIMG.attr("data-title", e.Title)

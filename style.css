@@ -24,10 +24,15 @@
 .movieList{
     font-size: 1vw;
     font-weight: 600;
+    margin: 0vw 3vw 0vw 3vw;
+    object-fit: cover;
+    flex: 1;
+    background-color: var(--white);
+    padding: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 0vw 3vw 0vw 3vw;
+    
 }
 a:link{
     
@@ -58,7 +63,7 @@ img:hover{
     margin: 0vh 3vw 3vh 3vw;
     width: 95%;
     height: 99%;
-    /* overflow: auto; */
+    overflow: auto;
     background-color: #0a265aaa;
 }
 
@@ -80,11 +85,13 @@ img:hover{
 }
 #close-button{
     position: absolute;
-    left: 85vw;
+    left: 87vw;
     top: 2vw;
-    background-color: #29117c;
-    width: 6vw;
-    height: 2vw;
+    background-color:purple;
+    width: 1.5vw;
+    height: 1.6vw;
+    cursor: pointer;
+    opacity: 0.40;
 }
 
 h3{
@@ -110,11 +117,19 @@ h3{
 }
 #nav-buttons, #noneButton{
     text-align: center;
-    padding-top: 0.55vw;
+    /* padding-top: 0.55vw;
     width: 6vw;
-    height: 2vw;
-    color: white;
-    background-color: black;
+    height: 2vw; */
+    font: 1em sans-serif;
+    color: black;
+    background-color: #F0E68C;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px 50px 0 0;
+    padding: 0vw 1vw 1vw 1vw;
+    flex: 0 0 300px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin: 20px;
 }
 #saveBox{
     background-color: #e6e9df;
@@ -133,6 +148,7 @@ h3{
      align-content: center;
  }
 
+
  .dropmenu{
      flex-direction: column;
      font-size: 1vw;
@@ -148,4 +164,28 @@ h3{
  .dropbttn:hover{
      cursor: pointer;
  }
+
+
+ .posterImage{
+     object-fit: cover;
+     width: 10vw;
+     height: 5vh;
+
+ }
+ .containerTitle{
+    display:flex; 
+    margin-bottom:1vw;
+    flex-direction: column;
+ }
+/* .card{
+    border-style: solid;
+  border-width: 1px;
+  border-radius: var(--border-radius);
+  padding: 10px;
+  flex: 0 0 300px;
+  
+  box-shadow: 10px 10px 5px #aaaaaa;
+  margin: 20px;
+  height: ;
+} */
 
