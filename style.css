@@ -84,7 +84,7 @@ img:hover{
     height: 96%;
     border: 5px solid black;
 }
-#close-button{
+/* #close-button{
     position: absolute;
     left: 87vw;
     top: 2vw;
@@ -93,7 +93,7 @@ img:hover{
     height: 1.6vw;
     cursor: pointer;
     opacity: 0.40;
-}
+} */
 
 h3{
     font-family: Arial, Helvetica, sans-serif;
@@ -115,16 +115,13 @@ h3{
     width: 100%;
     height: 100%;
     align-items: flex-end;
+    border: solid black 5px;
 }
 #nav-buttons, #noneButton{
-    /* padding-top: 0.55vw; */
-    /* width: 6vw;
-    height: 2vw; */
     display: block;
     text-align: center;
     font-family: 'Aleo';
     color: black;
-    background-color: #F0E68C;
     border-style: solid;
     border-width: 1px;
     border-radius: 12px;
@@ -132,7 +129,6 @@ h3{
     flex: 0 0 300px;
     margin: 20px;
     cursor: pointer;
-
     font-size: larger;
 }
 #nav-buttons:hover{
