@@ -84,16 +84,17 @@ img:hover{
     height: 96%;
     border: 5px solid black;
 }
-/* #close-button{
-    position: absolute;
-    left: 87vw;
-    top: 2vw;
-    background-color:#f0e68c;
-    width: 1.5vw;
-    height: 1.6vw;
+#close-button{
+    text-align: center;
+    font-family: 'Aleo';
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    margin: 20px 20;
     cursor: pointer;
-    opacity: 0.40;
-} */
+    padding: 15px;
+    
+}
 
 h3{
     font-family: Arial, Helvetica, sans-serif;

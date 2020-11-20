@@ -63,6 +63,7 @@ function movieNone(){
     movieListEl.append(container)
 }
 
+
 //THIS FUNCTION CREATES THE ELEMENTS THAT RENDER THE MOVIE TITLES AND POSTERS AND APPENDS THEM TO THE DOM
 function movieList(e){
     //Creates elements+++++++++++++
@@ -74,6 +75,8 @@ function movieList(e){
     var posterIMG = $("<img>");         
     // Sets element attributes++++++++++++++++++++++++++++++++++CSS
     container.attr("class", ".containerTitle;");
+    titleH2.attr("style", "text-align: center" )
+    year.attr("style", "text-align: center")
     // posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     posterIMG.attr("id", "poster");
     posterIMG.attr("class", "posterImage;")
