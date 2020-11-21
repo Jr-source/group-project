@@ -256,7 +256,6 @@ function NYTDataPull(){
     //creates the event listener for the navigatioin buttons++++++++++++++++++
     modalButtonsEl.on("click", function(event){
         console.log(event.target.id)
-        console.log(articles)
         modalArticlesEl.children().remove()
         //Organizes the data into "News_Desks"++++++++++++++++++++++++++++++
         articles.forEach(element=>{
