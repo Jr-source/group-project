@@ -37,7 +37,7 @@ function movieSearch(){
     }
     //Makes the API query+++++++++++++++++++++++
     var searchName = $("#movieName").val();
-    var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&type=movie&s=" + searchName;
+    var queryURL = "https://www.omdbapi.com/?apikey=347e88dd&type=movie&s=" + searchName;
     $.ajax({
         url: queryURL,
         method: "GET"
