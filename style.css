@@ -97,7 +97,7 @@ img:hover{
 }
 .close-btn{
     position: absolute;
-    left: 88.5vw;
+    left: 88vw;
     top: 1.5vw;
 
 }
@@ -170,6 +170,12 @@ h3{
  .dropdown{
     flex-direction: column;
     margin-top: 1vh;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+ }
+ /* .dropbttn{
+    max-width: 2vw; */
  }
 
  .dropbttn:hover{
@@ -194,7 +200,7 @@ h3{
     display: block;
     text-align: center;
     font-family: 'Aleo';
-    border-style: solid;
+    /* border-style: solid; */
     border-width: 1px;
     border-radius: 12px;
     padding: 1vw 1vw 1vw 1vw;
