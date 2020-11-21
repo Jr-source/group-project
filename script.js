@@ -63,7 +63,6 @@ function movieNone(){
     movieListEl.append(container)
 }
 
-
 //THIS FUNCTION CREATES THE ELEMENTS THAT RENDER THE MOVIE TITLES AND POSTERS AND APPENDS THEM TO THE DOM
 function movieList(e){
     //Creates elements+++++++++++++
@@ -77,12 +76,12 @@ function movieList(e){
     container.attr("class", ".containerTitle;");
     titleH2.attr("style", "text-align: center" )
     year.attr("style", "text-align: center")
-    // posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
     posterIMG.attr("id", "poster");
     posterIMG.attr("class", "posterImage;")
     // poster.attr("style", "width: 10vw; height: 10vh;")
     if(e.Poster === "N/A"){
         posterIMG.attr("src", "https://via.placeholder.com/300x447?text=No+Image+Available")    
+       
     }
     else{
         posterIMG.attr("src",e. Poster)
@@ -231,7 +230,7 @@ function NYTData(gdate){
 function noneDesk(){
     //Clears the information in the articles window+++++++++++++++++++++++++
     modalArticlesEl.children().remove()
-    //Hides the New_Desk navigation buttons and displays the option to view the unorganized articles+++++++++++
+    //Hides the New_Desk navigation buttons and displays the option to view th eunorganized articles+++++++++++
     modalButtonsEl.attr("style", "display:none")
     disclaimerEL.attr("style", "display:flex")
     //Creates the event listener for the "Articles" button inside the modal 
@@ -255,11 +254,10 @@ function NYTDataPull(){
     disclaimerEL.attr("style", "display:none")
     //creates the event listener for the navigatioin buttons++++++++++++++++++
     modalButtonsEl.on("click", function(event){
-        console.log(event.target.id)
         modalArticlesEl.children().remove()
         //Organizes the data into "News_Desks"++++++++++++++++++++++++++++++
         articles.forEach(element=>{
-            if (element.news_desk.includes(event.target.id)){
+            if (element.news_desk.includes(event.target.innerHTML)){
                 //Calls the function that creates and appends the elemets to render the articles+++++++++++
                articleElements(element)
             }
@@ -279,26 +277,16 @@ function articleElements(element){
     var leadPar = $("<div>")
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
-    cont.attr("class", "box")
     a.attr("draggable", "true")
     a.attr("ondragstart", "drag(event)")
     a.attr("id", "article"+ varName)
     a.attr("target", "_blank")
     a.attr("href", element.web_url)
-  
     a.attr("style", "margin: 0px;");
     link.attr("style", "margin: 0px;");
-
-    a.attr("class", "article-style drop-title has-background-dark")
-    idP.attr("class", "article-style has-background-primary")
-    idP.attr("style", "word-wrap: break-word")
-    leadP.attr("class", "article-style has-background-warning")
-    // leadP.attr("class", "button is-warning")
-
     //Sets text values++++++++++++++++++++++++++++++++++++++++++
     a.text(element.headline)
     leadP.text(element.lead_paragraph)
-    
     idP.text(element._id)
     a.text(element.headline.main)
     //Appends elements+++++++++++++++++++++++++++++++++++++++++
@@ -315,35 +303,28 @@ function allowDrop(ev){
 }
 
 function drag(ev){
-    // cNum = 1
+    cNum = 1
     $(ev.target).attr("style", "margin: 0px;")
     ev.dataTransfer.setData("text", ev.target.id)
     var clone =$(ev.target).clone()
     var  parentDiv = $(ev.target).parent();
     clone.text($(ev.target).text())
-    clone.attr("draggable", "true")
-    clone.attr("ondragstart", "drag(event)")
     clone.attr("id", "clone" + ev.target.id)
-    // cNum++
+    cNum++
     clone.attr("style", "display:none;");
     parentDiv.append(clone);
 }
 
 function dragDel(ev){
     ev.dataTransfer.setData("text", ev.target.id)
-    
-    modalMainEl.attr("ondrop", "dropDel(event)")
-    modalMainEl.attr("ondragover", "allowDrop(event)")
-    
+    window.attr("ondrop", "dropDel(event)")
+    window.attr("ondragover", "allowDrop(event)")
 }
 
 function dropDel(ev){
     var data = ev.dataTransfer.getData("text");
     var del = $("#"+data)
-    console.log(del)
-    // modalMainEl.attr("ondrop", "dropDel(event)")
-    del.parent().remove()
-    modalMainEl.attr("ondrop", "")
+    del.remove()
 }
 
 function drop(ev) {
@@ -359,11 +340,10 @@ function drop(ev) {
     // saveBox.children().forEach(element=>{
     //     console.log(element)
     // })
-    console.log(texts)
-    
+    // console.log(texts)
+    // console.log($(ev.target))
     // console.log($("#"+data))
     spacer.append(texts);
-    console.log($(spacer))
     saveBox.append(spacer);
     // console.log(cloneDisplay.text())
     // console.log(cloneDisplay.attr("id"))
@@ -385,7 +365,7 @@ function saveFavLinks(c){
 }
 
 //EVENT LISTENERSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//THESE EVENT LISTENER TRIGGERS THE MOVIE SEARCH========================
+//THESE EVENT LISTENER TRIGGER THE MOVIE SEARCH========================
 searchButton.on("click", function(event){
 movieSearch()  
 }) 
