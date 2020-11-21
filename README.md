@@ -46,4 +46,4 @@ THEN I am presented with similar results to if I had searched with the prompt an
 ![Code For Using a Movie Search API For Details](./images/MovieDetailsSearchCode.png)
 
 ### - Saves the search and makes a dropdown menu.
-![Dropdown Menu Code](./images/DrowDownMenuCode.png)
+![Dropdown Menu Code](./images/DropDownMenuCode.png)
