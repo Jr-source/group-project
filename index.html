@@ -13,11 +13,12 @@
 <body>
     <div id="main-modal" class="main-modal">
         <div id="modal" class="newsmodal" >
-            <div id="asside" >
+            <div id="aside">
                 <div id="saveBox" ondrop="drop(event)" ondragover="allowDrop(event)">
 
                 </div>
                 <div id="desks" class="box">
+
 
                     <div id="main-buttons" >
                         <div id="nav-buttons">National News</div>
@@ -27,7 +28,7 @@
                         <div id="nav-buttons">Sportsball News</div>
                         <div id="nav-buttons">Science</div>
                     </div>
-                    <div id="disclaimer" style="display: none;">
+                    <div id="disclaimer" style="display: none; is-info">
                         <div>
                             <p>The articles for this date are unsortable, if you would like to see the articles anyway click on the button below</p>
                         </div>
@@ -39,9 +40,11 @@
 
             </div>
             <div id="content">
-              
-                  <button id="close-button" class="button is-danger">Close X</button>
-               <div id="article-links" style="margin:0px">
+
+              <div class="close-btn">
+                <button id="close-button" class="button is-danger">Close X</button>
+              </div>
+                <div id="article-links" style="margin:0px">
 
                 </div>
             </div>
