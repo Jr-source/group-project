@@ -37,13 +37,13 @@ THEN I am presented with similar results to if I had searched with the prompt an
 
 ## Code Screenshots
 ### - Variables.
-![variables](images/Variables.png)
+![variables](/images/Variables.png)
 
 ### - Searches for a film using the database and given info.
-![MovieSearch](images/MovieSearchCode.png)
+![MovieSearch](/images/MovieSearchCode.png)
 
 ### - Finds details about the given movie.
-![cases](images/MovieDetailsSearchCode.png)
+![cases](/images/MovieDetailsSearchCode.png)
 
 ### - Saves the search and makes a dropdown menu.
-![generate](images/DrowDownMenuCode.png)
+![generate](/images/DrowDownMenuCode.png)
