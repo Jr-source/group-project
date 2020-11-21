@@ -70,7 +70,7 @@ img:hover{
     margin: 1vw 1vw 1vw 1vw;
     background-color: #f5f5f5;
     width: 25%;
-    height: 96%;
+    height: 98%;
 }
 
 #content{
@@ -95,7 +95,7 @@ img:hover{
 }
 .close-btn{
     position: absolute;
-    left: 88.5vw;
+    left: 88vw;
     top: 1.5vw;
 
 }
@@ -132,10 +132,10 @@ h3{
     border-width: 1px;
     border-radius: 6px;
     padding: 1vw 1vw 1vw 1vw;
-    flex: 0 0 300px;
     margin: 20px;
     cursor: pointer;
-    font-size: medium;
+    font-size: 1vw;
+    overflow: scroll;
 }
 #nav-buttons:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -168,7 +168,13 @@ h3{
  .dropdown{
     flex-direction: column;
     margin-top: 1vh;
+    background-color: white;
+    color: black;
+    cursor: pointer;
  }
+ /* .dropbttn{
+    max-width: 2vw; */
+ 
 
  .dropbttn:hover{
      cursor: pointer;
@@ -192,7 +198,7 @@ h3{
     display: block;
     text-align: center;
     font-family: 'Aleo';
-    border-style: solid;
+    /* border-style: solid; */
     border-width: 1px;
     border-radius: 12px;
     padding: 1vw 1vw 1vw 1vw;
