@@ -124,7 +124,8 @@ h3{
     align-items: flex-end;
     border: solid black 5px;
 }
-#nav-buttons, #noneButton{
+/* #nav-buttons, #noneButton{ */
+#main-buttons>div, #noneButton{
     display: block;
     text-align: center;
     font-family: 'Aleo';
