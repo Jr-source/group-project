@@ -3,7 +3,7 @@
 
 ## Link
 * [Repo](https://github.com/Jr-source/group-project/tree/main)
-* [Deployed]()
+* [Deployed](https://jr-source.github.io/group-project/)
 
 ## Task
 Create an application that uses two different API systems harmoniously to give a unique
@@ -37,13 +37,13 @@ THEN I am presented with similar results to if I had searched with the prompt an
 
 ## Code Screenshots
 ### - Variables.
-![Variables](./images/Variables.png)
+![Variables](./images/Variables.PNG)
 
 ### - Searches for a film using the database and given info.
-![Code For Searching For Movie Titles Using The API](./images/MovieSearchCode.png)
+![Code For Searching For Movie Titles Using The API](./images/MovieSearchCode.PNG)
 
 ### - Finds details about the given movie.
-![Code For Using a Movie Search API For Details](./images/MovieDetailsSearchCode.png)
+![Code For Using a Movie Search API For Details](./images/MovieDetailsSearchCode.PNG)
 
 ### - Saves the search and makes a dropdown menu.
-![Dropdown Menu Code](./images/DropDownMenuCode.png)
+![Dropdown Menu Code](./images/DropDownMenuCode.PNG)
