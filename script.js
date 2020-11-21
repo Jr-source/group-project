@@ -255,10 +255,12 @@ function NYTDataPull(){
     disclaimerEL.attr("style", "display:none")
     //creates the event listener for the navigatioin buttons++++++++++++++++++
     modalButtonsEl.on("click", function(event){
+        console.log(event.target.id)
+        console.log(articles)
         modalArticlesEl.children().remove()
         //Organizes the data into "News_Desks"++++++++++++++++++++++++++++++
         articles.forEach(element=>{
-            if (element.news_desk.includes(event.target.innerHTML)){
+            if (element.news_desk.includes(event.target.id)){
                 //Calls the function that creates and appends the elemets to render the articles+++++++++++
                articleElements(element)
             }
@@ -314,28 +316,35 @@ function allowDrop(ev){
 }
 
 function drag(ev){
-    cNum = 1
+    // cNum = 1
     $(ev.target).attr("style", "margin: 0px;")
     ev.dataTransfer.setData("text", ev.target.id)
     var clone =$(ev.target).clone()
     var  parentDiv = $(ev.target).parent();
     clone.text($(ev.target).text())
+    clone.attr("draggable", "true")
+    clone.attr("ondragstart", "drag(event)")
     clone.attr("id", "clone" + ev.target.id)
-    cNum++
+    // cNum++
     clone.attr("style", "display:none;");
     parentDiv.append(clone);
 }
 
 function dragDel(ev){
     ev.dataTransfer.setData("text", ev.target.id)
-    window.attr("ondrop", "dropDel(event)")
-    window.attr("ondragover", "allowDrop(event)")
+    
+    modalMainEl.attr("ondrop", "dropDel(event)")
+    modalMainEl.attr("ondragover", "allowDrop(event)")
+    
 }
 
 function dropDel(ev){
     var data = ev.dataTransfer.getData("text");
     var del = $("#"+data)
-    del.remove()
+    console.log(del)
+    // modalMainEl.attr("ondrop", "dropDel(event)")
+    del.parent().remove()
+    modalMainEl.attr("ondrop", "")
 }
 
 function drop(ev) {
@@ -351,10 +360,11 @@ function drop(ev) {
     // saveBox.children().forEach(element=>{
     //     console.log(element)
     // })
-    // console.log(texts)
-    // console.log($(ev.target))
+    console.log(texts)
+    
     // console.log($("#"+data))
     spacer.append(texts);
+    console.log($(spacer))
     saveBox.append(spacer);
     // console.log(cloneDisplay.text())
     // console.log(cloneDisplay.attr("id"))
@@ -376,7 +386,7 @@ function saveFavLinks(c){
 }
 
 //EVENT LISTENERSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//THESE EVENT LISTENER TRIGGER THE MOVIE SEARCH========================
+//THESE EVENT LISTENER TRIGGERS THE MOVIE SEARCH========================
 searchButton.on("click", function(event){
 movieSearch()  
 }) 
