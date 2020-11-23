@@ -37,7 +37,7 @@ function movieSearch(){
     }
     //Makes the API query+++++++++++++++++++++++
     var searchName = $("#movieName").val();
-    var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&type=movie&s=" + searchName;
+    var queryURL = "https://www.omdbapi.com/?apikey=347e88dd&type=movie&s=" + searchName;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -107,7 +107,7 @@ function getMovieInfo(event){
     //Queries the movie API+++++++++++++++++++++++++++++++++++
     var movieYear = $(event.target).attr("data-year")
     var movieName = $(event.target).attr("data-title")
-    var queryURL = "http://www.omdbapi.com/?apikey=347e88dd&&t=" + movieName + "&y=" + movieYear ;
+    var queryURL = "https://www.omdbapi.com/?apikey=347e88dd&&t=" + movieName + "&y=" + movieYear ;
     $.ajax({
         url: queryURL,
         method: "GET"
