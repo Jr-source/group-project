@@ -257,7 +257,7 @@ function NYTDataPull(){
         modalArticlesEl.children().remove()
         //Organizes the data into "News_Desks"++++++++++++++++++++++++++++++
         articles.forEach(element=>{
-            if (element.news_desk.includes(event.target.innerHTML)){
+            if (element.news_desk.includes(event.target.id)){
                 //Calls the function that creates and appends the elemets to render the articles+++++++++++
                articleElements(element)
             }
@@ -277,6 +277,7 @@ function articleElements(element){
     var leadPar = $("<div>")
     var articleId = $("<div>")
     //Sets attributes++++++++++++++++++++++++++++++++++++++++++++++++++++++CSS
+    cont.attr("class", "box")
     a.attr("draggable", "true")
     a.attr("ondragstart", "drag(event)")
     a.attr("id", "article"+ varName)
@@ -284,6 +285,10 @@ function articleElements(element){
     a.attr("href", element.web_url)
     a.attr("style", "margin: 0px;");
     link.attr("style", "margin: 0px;");
+    a.attr("class", "article-style drop-title has-background-dark")
+    idP.attr("class", "article-style has-background-primary")
+    idP.attr("style", "word-wrap: break-word")
+    leadP.attr("class", "article-style has-background-warning")
     //Sets text values++++++++++++++++++++++++++++++++++++++++++
     a.text(element.headline)
     leadP.text(element.lead_paragraph)
@@ -309,6 +314,8 @@ function drag(ev){
     var clone =$(ev.target).clone()
     var  parentDiv = $(ev.target).parent();
     clone.text($(ev.target).text())
+    clone.attr("draggable", "true")
+    clone.attr("ondragstart", "drag(event)")
     clone.attr("id", "clone" + ev.target.id)
     cNum++
     clone.attr("style", "display:none;");
@@ -317,13 +324,19 @@ function drag(ev){
 
 function dragDel(ev){
     ev.dataTransfer.setData("text", ev.target.id)
-    window.attr("ondrop", "dropDel(event)")
-    window.attr("ondragover", "allowDrop(event)")
+    modalMainEl.attr("ondrop", "dropDel(event)")
+    modalMainEl.attr("ondragover", "allowDrop(event)")
+    // window.attr("ondrop", "dropDel(event)")
+    // window.attr("ondragover", "allowDrop(event)")
 }
 
 function dropDel(ev){
     var data = ev.dataTransfer.getData("text");
     var del = $("#"+data)
+    console.log(del)
+    // modalMainEl.attr("ondrop", "dropDel(event)")
+    del.parent().remove()
+    modalMainEl.attr("ondrop", "")
     del.remove()
 }
 
@@ -349,6 +362,7 @@ function drop(ev) {
     // console.log(cloneDisplay.attr("id"))
     // console.log(cloneDisplay.attr("href"))
 }
+
 
 function saveFavLinks(c){
     var vName = arr + c.attr("id")
